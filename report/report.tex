@@ -1,0 +1,207 @@
+% Build from this directory: latexmk -pdf report.tex
+\documentclass[12pt,letterpaper]{article}
+
+% Page layout and typography (pdfLaTeX).
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % Scalable fonts required by microtype font expansion.
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}{../results/figures/}}
+\usepackage{booktabs,tabularx}
+\usepackage{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\setlength{\emergencystretch}{2em}
+
+% Edit these fields before submitting.
+\newcommand{\reporttitle}{FP-Growth for Frequent Itemset Mining}
+\newcommand{\reportauthor}{Your Name}
+\newcommand{\reportcourse}{Course Number and Name}
+\newcommand{\reportinstructor}{Instructor Name}
+\newcommand{\reportdate}{October 30, 2026}
+\hypersetup{pdftitle={\reporttitle},pdfauthor={\reportauthor}}
+
+% Visible writing prompts. Replace every occurrence before submission.
+\newcommand{\placeholder}[1]{\par\noindent\textit{[To write: #1]}\par}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% Title Page: 
+
+% \begin{titlepage}
+%   \centering
+%   {\large Stony Brook University\par}
+%   \vspace{2cm}
+%   {\LARGE\bfseries \reporttitle\par}
+%   \vspace{0.5cm}
+%   {\large Implementation, Validation, and Performance Evaluation\par}
+%   \vspace{2cm}
+%   {\large \reportauthor\par}
+%   \vspace{1cm}
+%   {\large \reportcourse\par}
+%   \vspace{0.5cm}
+%   {\large Instructor: \reportinstructor\par}
+%   \vfill
+%   {\large \reportdate\par}
+% \end{titlepage}
+
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\begin{abstract}
+\placeholder{Summarize the problem, implementation, datasets, validation
+approach, and main measured findings in about 150--250 words. Write this last.}
+\end{abstract}
+\tableofcontents
+% Add \listoffigures or \listoftables only if the final report needs them.
+\clearpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+\label{sec:introduction}
+\placeholder{Introduce frequent itemset mining, explain the project goals,
+and summarize the implementation and evaluation contributions.}
+% Example citation syntax: FP-growth was introduced by \citet{han2000fpgrowth}.
+
+\section{Background and Algorithm}
+\label{sec:algorithm}
+\subsection{Problem Definition}
+\placeholder{Define transactions, items, itemsets, absolute and relative
+support, and the minimum support threshold. State how a fractional threshold
+is converted to a transaction count.}
+% Example equation:
+% \begin{equation}
+%   \operatorname{supp}(X) = |\{T \in D : X \subseteq T\}|.
+%   \label{eq:support}
+% \end{equation}
+
+\subsection{FP-Tree Construction}
+\placeholder{Explain frequency counting, removal of infrequent items,
+deterministic item ordering, prefix sharing, and the header table.
+Cite the original algorithm using \texttt{\string\citep\{han2000fpgrowth\}}.}
+
+\subsection{Recursive Pattern Mining}
+\placeholder{Explain conditional pattern bases, conditional FP-trees,
+recursion, stopping conditions, and any single-path optimization implemented.
+Include pseudocode or a small tree diagram where helpful.}
+
+\subsection{Computational Considerations}
+\placeholder{Discuss tree size, recursion, output size, and factors that
+affect runtime and memory. Distinguish theoretical expectations from measurements.}
+
+\section{Implementation}
+\label{sec:implementation}
+\subsection{Program Structure and Data Structures}
+\placeholder{Describe the language, main modules, node representation,
+header links, support counts, memory ownership, and output format.}
+
+\subsection{Input Handling and Design Choices}
+\placeholder{Document input assumptions, duplicate-item handling,
+tie breaking, parameter validation, and any implementation optimizations.}
+
+% Optional bonus section: uncomment only if a CUDA version is implemented.
+% \subsection{CUDA Implementation}
+% Describe CPU/GPU work division, kernels, memory transfers, synchronization,
+% device limits, and how GPU results are checked against the CPU version.
+
+\section{Datasets and Preprocessing}
+\label{sec:datasets}
+\subsection{Benchmark Data}
+\placeholder{Describe the UCI Gas Sensor Array Drift Dataset and any other
+benchmarks actually used. Cite the dataset with
+\texttt{\string\citep\{vergara2012gas\}}. Record transaction counts, item
+counts, transaction lengths, and the selected batches or subsets.}
+
+\subsection{Transaction Encoding}
+\placeholder{Document selected features, normalization, binning rules,
+threshold fitting, item-ID mapping, and treatment of gas labels and batches.
+Explain how continuous measurements become discrete transactions.}
+
+\section{Correctness Validation}
+\label{sec:validation}
+\subsection{Worked Example}
+\placeholder{Show a small transaction database and minimum support.
+List the expected frequent itemsets and exact support counts, illustrate
+the FP-tree and at least one conditional tree, and compare actual output.}
+
+\subsection{Additional Tests}
+\placeholder{Report the tests actually run and their outcomes. Consider
+empty input, repeated items, identical transactions, support boundaries,
+no frequent items, tied frequencies, and comparison with exhaustive enumeration
+on small databases.}
+
+\section{Experimental Methodology}
+\label{sec:methodology}
+\subsection{Hardware and Software}
+\placeholder{Record CPU, RAM, operating system, compiler version and flags,
+and GPU/CUDA details if applicable. Include commands needed to reproduce runs.}
+
+\subsection{Measurements and Experimental Parameters}
+\placeholder{Specify support thresholds, input sizes, repetitions, warm-up
+policy, timer, and memory measurement method. Define whether timings include
+preprocessing, input/output, tree construction, mining, and GPU transfers.
+State how variability and incomplete runs are reported.}
+
+\section{Results and Discussion}
+\label{sec:results}
+\subsection{Execution Time}
+\placeholder{Present measured runtime against minimum support and input
+size, with units and variability. Explain observed trends.}
+
+\subsection{Memory Usage and Output Size}
+\placeholder{Report peak memory and number of frequent itemsets for the
+same configurations. Explain the relationship between support, tree size,
+output size, and resource use.}
+
+\subsection{Limitations}
+\placeholder{Discuss dataset and preprocessing choices, measurement limits,
+scalability, and any failed or incomplete experiments.}
+
+% Copy this table when measurements are available; do not invent values.
+% \begin{table}[htbp]
+%   \centering
+%   \caption{Performance on the specified benchmark configuration.}
+%   \label{tab:performance}
+%   \begin{tabular}{rrrr}
+%     \toprule
+%     Min. support (\%) & Itemsets & Time (s) & Peak memory (MiB) \\
+%     \midrule
+%     % Insert measured rows here.
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+%
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{runtime.pdf}
+%   \caption{Runtime versus minimum support; specify dataset and run settings.}
+%   \label{fig:runtime}
+% \end{figure}
+% Cross-reference with Figure~\ref{fig:runtime} or Table~\ref{tab:performance}.
+
+\section{Conclusion}
+\label{sec:conclusion}
+\placeholder{Summarize what was implemented, the evidence for correctness,
+the main measured results, and specific future improvements.}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
+% Keep starter references visible while drafting. Remove this \nocite line
+% once real citations have been added; then only cited entries will appear.
+\nocite{han2000fpgrowth,vergara2012gas}
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\section{Reproducibility Details}
+\label{app:reproduction}
+\placeholder{Include exact build and run commands, preprocessing parameters,
+and additional validation or result tables that would interrupt the main text.
+Remove this appendix if all details fit in the main report.}
+
+\end{document}
