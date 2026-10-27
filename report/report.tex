@@ -73,11 +73,7 @@ and summarize the implementation and evaluation contributions.}
 \placeholder{Define transactions, items, itemsets, absolute and relative
 support, and the minimum support threshold. State how a fractional threshold
 is converted to a transaction count.}
-% Example equation:
-% \begin{equation}
-%   \operatorname{supp}(X) = |\{T \in D : X \subseteq T\}|.
-%   \label{eq:support}
-% \end{equation}
+
 
 \subsection{FP-Tree Construction}
 \placeholder{Explain frequency counting, removal of infrequent items,
@@ -93,6 +89,33 @@ Include pseudocode or a small tree diagram where helpful.}
 \placeholder{Discuss tree size, recursion, output size, and factors that
 affect runtime and memory. Distinguish theoretical expectations from measurements.}
 
+\section{Datasets and Preprocessing}
+\label{sec:datasets}
+\subsection{Benchmark Data}
+
+\placeholder{Describe the UCI Gas Sensor Array Drift Dataset and any other
+benchmarks actually used. Cite the dataset with
+\texttt{\string\citep\{vergara2012gas\}}. Record transaction counts, item
+counts, transaction lengths, and the selected batches or subsets.}
+
+\subsection{Transaction Encoding}
+Read datasheet
+
+Clean Data 
+
+Encode items 
+
+Count item frequencies 
+
+Remove infrequent items 
+
+Sort remaining items in each transaction by frequency 
+
+Build FP-Tree 
+\placeholder{Document selected features, normalization, binning rules,
+threshold fitting, item-ID mapping, and treatment of gas labels and batches.
+Explain how continuous measurements become discrete transactions.}
+
 \section{Implementation}
 \label{sec:implementation}
 \subsection{Program Structure and Data Structures}
@@ -104,22 +127,10 @@ header links, support counts, memory ownership, and output format.}
 tie breaking, parameter validation, and any implementation optimizations.}
 
 % Optional bonus section: uncomment only if a CUDA version is implemented.
-% \subsection{CUDA Implementation}
+\subsection{CUDA Implementation}
 % Describe CPU/GPU work division, kernels, memory transfers, synchronization,
 % device limits, and how GPU results are checked against the CPU version.
 
-\section{Datasets and Preprocessing}
-\label{sec:datasets}
-\subsection{Benchmark Data}
-\placeholder{Describe the UCI Gas Sensor Array Drift Dataset and any other
-benchmarks actually used. Cite the dataset with
-\texttt{\string\citep\{vergara2012gas\}}. Record transaction counts, item
-counts, transaction lengths, and the selected batches or subsets.}
-
-\subsection{Transaction Encoding}
-\placeholder{Document selected features, normalization, binning rules,
-threshold fitting, item-ID mapping, and treatment of gas labels and batches.
-Explain how continuous measurements become discrete transactions.}
 
 \section{Correctness Validation}
 \label{sec:validation}
